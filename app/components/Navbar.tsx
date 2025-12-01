@@ -8,16 +8,18 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-primary-green/90 backdrop-blur-sm border-b border-primary-light/20">
+    <nav className="fixed top-0 w-full z-50 backdrop-blur-sm">
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center">
-              {/* Placeholder for logo */}
-              <span className="text-primary-green font-bold">JM</span>
-            </div>
-            <span className="text-xl font-bold">JEFF MUTHURI</span>
+          <div className="flex items-center">
+            <Image
+              src="/images/logo-main.png"
+              alt="Jeff Muthuri Logo"
+              width={150}
+              height={40}
+              className="h-10 w-auto object-contain"
+            />
           </div>
 
           {/* Desktop Menu */}
