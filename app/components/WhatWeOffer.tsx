@@ -14,7 +14,7 @@ export default function WhatWeOffer() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="services" className="py-20 bg-primary-green/50" ref={ref}>
+    <section id="services" className="py-20" ref={ref}>
       <div className="container-custom">
         <h2 className={`text-4xl lg:text-5xl font-bold text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>

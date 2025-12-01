@@ -14,8 +14,8 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero rating={4.8} totalReviews={1250} />
-      {/* <WhatWeOffer />
-      <MeetAdvisor />
+      {/* <WhatWeOffer /> */}
+      {/*<MeetAdvisor />
       <InsurancePlans />
       <WhoGetsInsured />
       <WhyChooseMe />
