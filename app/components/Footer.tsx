@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -7,11 +9,14 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center">
-                <span className="text-primary-green font-bold">JM</span>
-              </div>
-              <span className="text-xl font-bold">JEFF MUTHURI</span>
+            <div className="flex items-center mb-4">
+              <Image
+                src="/images/logo-main.png"
+                alt="Jeff Muthuri Logo"
+                width={150}
+                height={40}
+                className="h-10 w-auto object-contain"
+              />
             </div>
             <p className="text-gray-300 mb-4">
               Your trusted partner in securing a better financial future through
