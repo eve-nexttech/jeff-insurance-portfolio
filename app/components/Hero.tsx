@@ -22,10 +22,33 @@ export default function Hero({ rating = 4.8, totalReviews = 1000 }: HeroProps) {
         <div className="flex flex-col items-center justify-center">
           {/* Text Content */}
           <div className="space-y-6 animate-fade-in">
-            {/* <div className="flex items-center space-x-2">
-              <span className="text-2xl">👑</span>
-              <span className="text-sm uppercase tracking-wider">Best Insurance Company</span>
-            </div> */}
+            <div className="absolute top-1/2 left-[-5%] -translate-y-1/2 w-full flex justify-start pl-4 md:pl-16 lg:pl-32 xl:pl-48">
+              <div className="flex flex-col items-start space-y-2 max-w-xs p-4">
+                <div className="flex items-start flex-col space-x-2">
+                  <Image
+                    src="/images/ri_diamond-fill.png"
+                    alt="Bruce Gallen Avatar"
+                    width={48}
+                    height={48}
+                    className="rounded-full object-cover"
+                  />
+                  <span className="text-sm uppercase tracking-wider text-white">Best</span>
+                  <span className="text-sm uppercase tracking-wider text-white">Insurance</span>
+                  <span className="text-sm uppercase tracking-wider text-white">Company</span>
+                </div>
+                <hr className="w-full h-px bg-white/10" />
+                <div className="mt-4 flex items-center space-x-3">
+                  {/* Placeholder for avatar with first letter */}
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-600 text-white text-xl font-bold">
+                    B
+                  </div>
+                  <div>
+                    <p className="text-white font-semibold">Bruce Gallen</p>
+                    <p className="text-gray-300 text-sm">"Excellent insurance services!"</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div className="flex items-center space-x-2 mt-4 px-4 py-2 rounded-full w-[400px] justify-center items-center backdrop-blur-sm border border-white/10 shadow-lg mx-auto">
               <span className="text-white text-lg">powered by</span>
