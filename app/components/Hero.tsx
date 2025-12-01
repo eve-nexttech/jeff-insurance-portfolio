@@ -68,16 +68,27 @@ export default function Hero({ rating = 4.8, totalReviews = 1000 }: HeroProps) {
             {/* Card 3 - Satisfaction Badge */}
             <img src="/images/satisfaction.png" alt="Customer satisfaction badge" className="object-cover w-96 h-96 z-10" />
 
-            {/* Rating Badge */}
-            {/* <div className="absolute top-4 right-4 bg-white rounded-2xl p-4 shadow-lg animate-float">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary-green">{rating}</div>
-                <div className="text-xs text-gray-600">{totalReviews} Reviews</div>
-                <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mt-2 flex items-center justify-center">
-                  <span className="text-2xl">👤</span>
-                </div>
+          </div>
+          {/* Rating Badge */}
+          <div className="absolute right-[5%] top-1/2 -translate-y-1/2 bg-white rounded-full p-4 shadow-lg animate-float">
+            <div className="h-full">
+              <div className="w-full flex justify-center mb-2">
+                <Image
+                  src="/images/mingcute_star-fill.png"
+                  alt="Star icon"
+                  width={48}
+                  height={48}
+                />
               </div>
-            </div> */}
+              <div className="text-6xl font-bold text-slate-900 text-center">{rating}</div>
+              <div className="text-xs text-slate-900 text-center">Reviews</div>
+              <img
+                src="/images/rating-image.png"
+                alt="Rating icon"
+                className="w-32 h-64 mx-auto my-8 object-cover"
+                height={32}
+              />
+            </div>
           </div>
         </div>
       </div>
