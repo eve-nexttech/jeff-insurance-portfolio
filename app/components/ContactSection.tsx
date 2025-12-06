@@ -113,7 +113,7 @@ export default function ContactSection() {
             </div>
 
             <h2 className="text-4xl lg:text-6xl font-bold">
-              Let's secure your
+              Let&apos;s secure your
               <br />
               future <span className="gradient-text">together!</span>
             </h2>
@@ -173,7 +173,7 @@ export default function ContactSection() {
 
             {submitSuccess && (
               <div className="mb-6 p-4 bg-green-500/20 border border-green-500 rounded-xl text-green-300 animate-fade-in">
-                ✓ Thank you! Your message has been sent successfully. I'll get back to you soon.
+                ✓ Thank you! Your message has been sent successfully. I&apos;ll get back to you soon.
               </div>
             )}
 
@@ -263,8 +263,8 @@ export default function ContactSection() {
                 type="submit"
                 disabled={isSubmitting}
                 className={`w-full py-4 rounded-xl font-semibold transition transform ${isSubmitting
-                    ? 'bg-gray-500 cursor-not-allowed'
-                    : 'bg-primary-light text-primary-green hover:bg-white hover:scale-105 cursor-pointer'
+                  ? 'bg-gray-500 cursor-not-allowed'
+                  : 'bg-primary-light text-primary-green hover:bg-white hover:scale-105 cursor-pointer'
                   }`}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message 📨'}

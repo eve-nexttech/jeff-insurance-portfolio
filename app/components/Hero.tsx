@@ -4,10 +4,9 @@ import Image from 'next/image';
 
 interface HeroProps {
   rating?: number;
-  totalReviews?: number;
 }
 
-export default function Hero({ rating = 4.8, totalReviews = 1000 }: HeroProps) {
+export default function Hero({ rating = 4.8 }: HeroProps) {
   return (
     <section className="relative min-h-screen pt-16 pb-20 overflow-hidden">
       {/* Decorative SVG curves in background */}
@@ -42,7 +41,7 @@ export default function Hero({ rating = 4.8, totalReviews = 1000 }: HeroProps) {
                   </div>
                   <div>
                     <p className="text-white font-semibold">Bruce Gallen</p>
-                    <p className="text-gray-300 text-sm">"Excellent insurance services!"</p>
+                    <p className="text-gray-300 text-sm">&quot;Excellent insurance services!&quot;</p>
                   </div>
                 </div>
               </div>

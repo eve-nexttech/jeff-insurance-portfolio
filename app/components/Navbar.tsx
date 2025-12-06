@@ -36,7 +36,7 @@ export default function Navbar() {
               Services
             </Link>
             <Link href="#insurance" className="hover:text-primary-light transition">
-              Who get's Insurance
+              Who gets Insurance
             </Link>
             <button className="bg-white text-primary-green px-6 py-2 rounded-full hover:bg-primary-light hover:text-white transition cursor-pointer">
               Contact me 📞

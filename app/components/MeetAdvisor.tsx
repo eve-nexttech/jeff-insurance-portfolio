@@ -23,11 +23,11 @@ export default function MeetAdvisor() {
             </h2>
 
             <p className="text-gray-300 text-lg leading-relaxed">
-              I'm a licensed insurance broker dedicated to guiding you through the best financial and
+              I&apos;m a licensed insurance broker dedicated to guiding you through the best financial and
               protection plans on the market. My goal is to simplify insurance. One human advice at a
               time to protect you with the best products that best match your dreams and lifestyle.
-              Whether you're saving for retirement, investing in your child's education, or looking to
-              secure your family's future, I'm here to support you every step of the way.
+              Whether you&apos;re saving for retirement, investing in your child&apos;s education, or looking to
+              secure your family&apos;s future, I&apos;m here to support you every step of the way.
             </p>
 
             <button className="bg-primary-light text-primary-green px-6 py-3 rounded-full font-semibold hover:bg-white transition cursor-pointer">
