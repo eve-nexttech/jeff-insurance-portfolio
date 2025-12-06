@@ -71,11 +71,11 @@ export default function Hero({ rating = 4.8 }: HeroProps) {
 
           {/* Image Cards */}
           <div className="relative h-[300px] lg:h-[500px] animate-slide-up flex items-center justify-center">
-            <img src="/images/handshake.png" alt="Handshake representing agreement and trust" className="object-cover w-48 lg:w-96 h-48 lg:h-96 z-10 mt-8" />
+            <Image src="/images/handshake.png" alt="Handshake representing agreement and trust" width={384} height={384} className="object-cover w-48 lg:w-96 h-48 lg:h-96 z-10 mt-8" />
 
-            <img src="/images/family.png" alt="Happy family looking forward" className="object-cover w-42 lg:w-84 h-42 lg:h-84 mx-[-60px]" />
+            <Image src="/images/family.png" alt="Happy family looking forward" width={336} height={336} className="object-cover w-42 lg:w-84 h-42 lg:h-84 mx-[-60px]" />
 
-            <img src="/images/satisfaction.png" alt="Customer satisfaction badge" className="object-cover w-48 lg:w-96 h-48 lg:h-96 z-10 mt-8" />
+            <Image src="/images/satisfaction.png" alt="Customer satisfaction badge" width={384} height={384} className="object-cover w-48 lg:w-96 h-48 lg:h-96 z-10 mt-8" />
 
           </div>
           {/* Rating Badge */}
@@ -92,10 +92,11 @@ export default function Hero({ rating = 4.8 }: HeroProps) {
               </div>
               <div className="text-sm lg:text-6xl font-bold text-slate-900 text-center">{rating}</div>
               <div className="text-[0.2rem] lg:text-xs text-slate-900 text-center">Reviews</div>
-              <img
+              <Image
                 src="/images/rating-image.png"
                 alt="Rating icon"
                 className="w-6 h-16 lg:w-32 lg:h-32 mx-auto my-2 lg:my-8 object-contain"
+                width={32}
                 height={32}
               />
             </div>

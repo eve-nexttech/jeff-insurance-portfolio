@@ -3,6 +3,7 @@
 import React from 'react';
 import { ServiceCard } from '@/lib/types';
 import { useScrollAnimation } from '@/app/hooks/useScrollAnimation';
+import Image from 'next/image';
 
 const services: ServiceCard[] = [
   { id: '1', title: 'Personal Pension Plan', url: "/images/offerSection/PensionPlan.png", description: 'Build your retirement your way with an IPP—flexible, tax-smart, and tailored to your goals, with the option to combine all your past pension benefits for maximum growth.' },
@@ -23,7 +24,7 @@ export default function WhatWeOffer() {
     }, 3000); // Change slide every 3 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [services]);
 
   // Scroll to current slide
   React.useEffect(() => {
@@ -65,7 +66,7 @@ export default function WhatWeOffer() {
                 }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <img src={service.url} alt={service.title} className="w-16 h-16 object-cover rounded-full" />
+              <Image src={service.url} alt={service.title} width={64} height={64} className="object-cover rounded-full" />
               <div className="flex flex-col text-start mx-4 mb-4">
                 <h3 className="text-2xl font-bold">{service.title}</h3>
                 <p className="text-sm text-white font-normal font-weight-regular">{service.description}</p>
@@ -112,13 +113,15 @@ export default function WhatWeOffer() {
                   >
                     <div
                       className={`rounded-3xl p-4 flex flex-col justify-start items-center text-center cursor-pointer border transition-all duration-500 h-full min-h-[320px] ${isCenterItem
-                          ? 'border-primary-light/40 bg-gradient-to-br from-primary/10 to-transparent shadow-xl'
-                          : 'border-primary-light/20 bg-transparent opacity-60'
+                        ? 'border-primary-light/40 bg-gradient-to-br from-primary/10 to-transparent shadow-xl'
+                        : 'border-primary-light/20 bg-transparent opacity-60'
                         }`}
                     >
-                      <img
+                      <Image
                         src={service.url}
                         alt={service.title}
+                        width={96}
+                        height={96}
                         className={`object-cover rounded-full mb-3 transition-all duration-500 ${isCenterItem ? 'w-24 h-24' : 'w-16 h-16'
                           }`}
                       />

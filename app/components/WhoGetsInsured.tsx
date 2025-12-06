@@ -5,7 +5,7 @@ export default function WhoGetsInsured() {
     <section id="insurance" className="py-20">
       <div className="container-custom">
         <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16">
-          Who get's <span className="gradient-text">insured?</span>
+          Who get&apos;s <span className="gradient-text">insured?</span>
         </h2>
 
         <div className="relative max-w-4xl mx-auto">
@@ -31,8 +31,8 @@ export default function WhoGetsInsured() {
           {/* Info text below */}
           <div className="mt-12 text-center max-w-2xl mx-auto">
             <p className="text-gray-300 text-lg">
-              Everyone deserves financial security. Whether you're a young professional starting out,
-              a parent planning for your children's education, or someone looking towards retirement,
+              Everyone deserves financial security. Whether you&apos;re a young professional starting out,
+              a parent planning for your children&apos;s education, or someone looking towards retirement,
               our insurance solutions are designed for you.
             </p>
           </div>
