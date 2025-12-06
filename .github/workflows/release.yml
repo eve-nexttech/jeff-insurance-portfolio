@@ -27,3 +27,8 @@ jobs:
       
       - name: Build project
         run: npm run build
+      
+      # merge to production branch for release
+      - name: Deploy to production
+        run: git checkout production && git merge main && git push origin production
+        
