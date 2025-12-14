@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import WhatWeOffer from './components/WhatWeOffer';
-// import MeetAdvisor from './components/MeetAdvisor';
+import MeetAdvisor from './components/MeetAdvisor';
 // import InsurancePlans from './components/InsurancePlans';
 // import WhoGetsInsured from './components/WhoGetsInsured';
 // import WhyChooseMe from './components/WhyChooseMe';
@@ -15,12 +15,14 @@ export default function Home() {
       <Navbar />
       <Hero rating={4.8} />
       <WhatWeOffer />
-      {/*<MeetAdvisor />
+      <MeetAdvisor />
+      {/*
       <InsurancePlans />
       <WhoGetsInsured />
       <WhyChooseMe />
       <ContactSection />
-      <Footer /> */}
+      <Footer /> 
+      */}
       <BackToTop />
     </main>
   );

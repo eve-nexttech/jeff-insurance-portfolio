@@ -2,7 +2,7 @@
 
 export default function MeetAdvisor() {
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden px-4 lg:px-0">
       {/* Background decoration */}
       <div className="absolute right-0 top-1/2 transform -translate-y-1/2 opacity-10 pointer-events-none">
         <svg width="200" height="600" viewBox="0 0 200 600">
@@ -14,7 +14,7 @@ export default function MeetAdvisor() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="space-y-6">
-            <div className="inline-block bg-primary-light/20 px-4 py-2 rounded-full text-sm">
+            <div className="inline-block px-4 py-2 rounded-full text-sm backdrop-blur-sm border border-white/10 shadow-lg">
               *About me
             </div>
 
@@ -30,9 +30,9 @@ export default function MeetAdvisor() {
               secure your family&apos;s future, I&apos;m here to support you every step of the way.
             </p>
 
-            <button className="bg-primary-light text-primary-green px-6 py-3 rounded-full font-semibold hover:bg-white transition cursor-pointer">
+            {/* <button className="bg-primary-light text-primary-green px-6 py-3 rounded-full font-semibold hover:bg-white transition cursor-pointer">
               Learn More About Me →
-            </button>
+            </button> */}
           </div>
 
           {/* Image */}
@@ -49,9 +49,9 @@ export default function MeetAdvisor() {
               </div>
 
               {/* Decorative element */}
-              <div className="absolute bottom-0 right-0 bg-white text-primary-green px-4 py-2 rounded-full shadow-lg text-sm font-semibold">
+              {/* <div className="absolute bottom-0 right-0 bg-white text-primary-green px-4 py-2 rounded-full shadow-lg text-sm font-semibold">
                 *Specializes
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
