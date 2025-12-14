@@ -3,7 +3,7 @@ import Hero from './components/Hero';
 import WhatWeOffer from './components/WhatWeOffer';
 import MeetAdvisor from './components/MeetAdvisor';
 // import InsurancePlans from './components/InsurancePlans';
-// import WhoGetsInsured from './components/WhoGetsInsured';
+import WhoGetsInsured from './components/WhoGetsInsured';
 // import WhyChooseMe from './components/WhyChooseMe';
 // import ContactSection from './components/ContactSection';
 // import Footer from './components/Footer';
@@ -16,9 +16,9 @@ export default function Home() {
       <Hero rating={4.8} />
       <WhatWeOffer />
       <MeetAdvisor />
-      {/*
-      <InsurancePlans />
+      {/* <InsurancePlans /> */}
       <WhoGetsInsured />
+      {/*
       <WhyChooseMe />
       <ContactSection />
       <Footer /> 
