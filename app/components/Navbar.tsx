@@ -37,13 +37,13 @@ export default function Navbar() {
             <Link href="#insurance" className="hover:text-primary-light transition">
               Who gets Insurance
             </Link>
-            <button className="bg-white text-primary-green px-6 py-2 rounded-full hover:bg-primary-light hover:text-white transition cursor-pointer">
+            <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="bg-white text-primary-green px-6 py-2 rounded-full hover:bg-primary-light hover:text-white transition cursor-pointer">
               Contact me 📞
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden bg-white text-primary-green px-6 py-2 rounded-full hover:bg-primary-light hover:text-white transition cursor-pointer">
+          <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="md:hidden bg-white text-primary-green px-6 py-2 rounded-full hover:bg-primary-light hover:text-white transition cursor-pointer">
             Contact me 📞
           </button>
         </div>
