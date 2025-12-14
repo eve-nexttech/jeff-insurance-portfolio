@@ -4,7 +4,7 @@ import WhatWeOffer from './components/WhatWeOffer';
 import MeetAdvisor from './components/MeetAdvisor';
 // import InsurancePlans from './components/InsurancePlans';
 import WhoGetsInsured from './components/WhoGetsInsured';
-// import WhyChooseMe from './components/WhyChooseMe';
+import WhyChooseMe from './components/WhyChooseMe';
 // import ContactSection from './components/ContactSection';
 // import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
@@ -18,8 +18,8 @@ export default function Home() {
       <MeetAdvisor />
       {/* <InsurancePlans /> */}
       <WhoGetsInsured />
-      {/*
       <WhyChooseMe />
+      {/*
       <ContactSection />
       <Footer /> 
       */}
