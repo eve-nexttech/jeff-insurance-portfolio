@@ -4,6 +4,8 @@ import React from 'react';
 import { ServiceCard } from '@/lib/types';
 import { useScrollAnimation } from '@/app/hooks/useScrollAnimation';
 import Image from 'next/image';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const services: ServiceCard[] = [
   { id: '1', title: 'Personal Pension Plan', url: "/images/offerSection/PensionPlan.png", description: 'Build your retirement your way with an IPP—flexible, tax-smart, and tailored to your goals, with the option to combine all your past pension benefits for maximum growth.' },
@@ -24,7 +26,7 @@ export default function WhatWeOffer() {
     }, 3000); // Change slide every 3 seconds
 
     return () => clearInterval(interval);
-  }, [services]);
+  }, []); // Empty dependency array - services is a constant
 
   // Scroll to current slide
   React.useEffect(() => {
@@ -40,7 +42,7 @@ export default function WhatWeOffer() {
         behavior: 'smooth'
       });
     }
-  }, [currentSlide, services.length]); // Added services.length to dependency array
+  }, [currentSlide]); // services.length is a constant, no need to include it
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % services.length);
@@ -58,17 +60,17 @@ export default function WhatWeOffer() {
           What we offer
         </h2>
 
-        <div className="hidden lg:grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <div
               key={service.id}
-              className={`rounded-3xl p-4 flex flex-row justify-start items-start text-center card-hover cursor-pointer border border-primary-light/20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              className={`w-full h-[200px] rounded-3xl p-4 flex flex-row justify-start items-start text-center card-hover cursor-pointer border border-primary-light/20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <Image src={service.url} alt={service.title} width={64} height={64} className="object-cover rounded-full" />
+              <Image src={service.url} alt={service.title} width={64} height={64} className="object-cover rounded-3xl" />
               <div className="flex flex-col text-start mx-4 mb-4">
-                <h3 className="text-2xl font-bold">{service.title}</h3>
+                <h3 className="text-xl font-bold">{service.title}</h3>
                 <p className="text-sm text-white font-normal font-weight-regular">{service.description}</p>
               </div>
             </div>
@@ -76,101 +78,41 @@ export default function WhatWeOffer() {
         </div>
 
         {/* Carousel for small/medium screens - Shows 3 items */}
-        <div className="lg:hidden relative w-full py-12">
-          {/* Previous Button */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 btn btn-circle btn-sm bg-primary/80 hover:bg-primary border-none text-white shadow-lg"
-            aria-label="Previous slide"
+        <div className="lg:hidden relative w-full py-12 px-4">
+          <Carousel
+            showArrows={false}
+            autoPlay={true}
+            interval={3000}
+            infiniteLoop={true}
+            showStatus={false}
+            showThumbs={false}
+            showIndicators={false}
+            stopOnHover={true}
+            centerMode={true}
+            centerSlidePercentage={80}
+            selectedItem={currentSlide}
+            onChange={(index) => setCurrentSlide(index)}
           >
-            ❮
-          </button>
-
-          {/* Carousel Container - Shows 3 items */}
-          <div className="relative w-full overflow-hidden px-2">
-            <div
-              ref={carouselRef}
-              className="flex items-center justify-start transition-transform duration-500 ease-out gap-3"
-              style={{
-                transform: `translateX(calc(50% - ${currentSlide * 33}% - ${currentSlide * 0.75}rem))`,
-              }}
-            >
-              {services.map((service, index) => {
-                const isCenterItem = index === currentSlide;
-
-                return (
-                  <div
-                    key={service.id}
-                    className="flex-shrink-0 transition-all duration-500 ease-out"
-                    style={{
-                      width: '30vw',
-                      minWidth: '200px',
-                      maxWidth: '280px',
-                      transform: isCenterItem ? 'scale(1.25)' : 'scale(0.85)',
-                      opacity: 1,
-                      zIndex: isCenterItem ? 10 : 1,
-                    }}
-                  >
-                    <div
-                      className={`rounded-3xl p-4 flex flex-col justify-start items-center text-center cursor-pointer border transition-all duration-500 h-full min-h-[320px] ${isCenterItem
-                        ? 'border-primary-light/40 bg-gradient-to-br from-primary/10 to-transparent shadow-xl'
-                        : 'border-primary-light/20 bg-transparent opacity-60'
-                        }`}
-                    >
-                      <Image
-                        src={service.url}
-                        alt={service.title}
-                        width={96}
-                        height={96}
-                        className={`object-cover rounded-full mb-3 transition-all duration-500 ${isCenterItem ? 'w-24 h-24' : 'w-16 h-16'
-                          }`}
-                      />
-                      <h3
-                        className={`font-bold mb-2 transition-all duration-500 ${isCenterItem ? 'text-xl' : 'text-base'
-                          }`}
-                      >
-                        {service.title}
-                      </h3>
-                      <p
-                        className={`text-white font-normal transition-all duration-500 leading-relaxed ${isCenterItem ? 'text-sm opacity-100' : 'text-xs opacity-80'
-                          }`}
-                      >
-                        {service.description}
-                      </p>
-                    </div>
+            {services.map((service, index) => {
+              const isCentered = index === currentSlide;
+              return (
+                <div
+                  key={service.id}
+                  className={`w-[250px] h-[350px] mx-auto my-8 rounded-3xl p-4 flex flex-col justify-center items-center text-center card-hover cursor-pointer border border-primary-light/20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} ${isCentered ? 'scale-115' : 'scale-100'
+                    }`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                >
+                  <Image src={service.url} alt={service.title} width={32} height={32} className="object-contain rounded-full w-24 h-24" />
+                  <div className="flex flex-col text-start mx-4 my-4 items-center">
+                    <h3 className="text-xl font-bold text-center">{service.title}</h3>
+                    <p className="text-xs text-white font-normal font-weight-light text-center">{service.description}</p>
                   </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Next Button */}
-          <button
-            onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 btn btn-circle btn-sm bg-primary/80 hover:bg-primary border-none text-white shadow-lg"
-            aria-label="Next slide"
-          >
-            ❯
-          </button>
-
-          {/* Indicator Dots */}
-          <div className="flex justify-center w-full py-4 gap-2">
-            {services.map((service, index) => (
-              <button
-                key={service.id}
-                onClick={() => setCurrentSlide(index)}
-                className={`btn btn-xs transition-all duration-300 ${currentSlide === index
-                  ? 'btn-primary'
-                  : 'btn-outline btn-primary opacity-50 hover:opacity-100'
-                  }`}
-                aria-label={`Go to slide ${index + 1}`}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
+                </div>
+              );
+            })}
+          </Carousel>
         </div>
       </div>
-    </section>
+    </section >
   );
 }
