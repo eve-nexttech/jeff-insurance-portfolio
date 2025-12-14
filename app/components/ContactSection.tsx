@@ -96,7 +96,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden px-4 lg:px-0">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <svg className="absolute bottom-0 left-0 w-1/2 h-full" viewBox="0 0 500 800">
@@ -119,7 +119,7 @@ export default function ContactSection() {
             </h2>
 
             <p className="text-gray-300 text-lg">
-              Reach out to Nolu for free consultations and find the insurance plan that fits your life and goals.
+              Reach out <img src="/svg/now.svg" alt="Cursor icon" className="w-32 h-32 inline-block align-middle" /> for free consultations and find the insurance plan that fits your life and goals.
             </p>
 
             {/* Contact Info Cards */}

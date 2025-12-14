@@ -25,7 +25,7 @@ const reasons = [
 
 export default function WhyChooseMe() {
   return (
-    <section className="py-20">
+    <section className="py-20 px-4 lg:px-0">
       <div className="container-custom">
         <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16">
           Why <span className="gradient-text">choose me?</span>
