@@ -86,8 +86,8 @@ import { useState } from 'react';
 // import { ChevronRight } from 'lucide-react';
 
 export default function InsurancePlans() {
-  const [expandedCard, setExpandedCard] = useState(4);
-  const [focusedCard, setFocusedCard] = useState(null);
+  const [expandedCard, setExpandedCard] = useState<number | null>(4);
+  const [focusedCard, setFocusedCard] = useState<number | null>(null);
 
   const plans = [
     {
@@ -120,7 +120,7 @@ export default function InsurancePlans() {
     }
   ];
 
-  const isCardActive = (cardId) => expandedCard === cardId || focusedCard === cardId;
+  const isCardActive = (cardId: number) => expandedCard === cardId || focusedCard === cardId;
 
   return (
     <div className="min-h-screen py-16 px-4 sm:px-4 lg:px-6">
