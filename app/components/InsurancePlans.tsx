@@ -137,7 +137,7 @@ export default function InsurancePlans() {
                   group relative rounded-3xl overflow-visible cursor-pointer 
                   transition-all duration-500 ease-in-out flex-shrink-0
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950
-                  ${isActive ? 'w-[250px] h-[500px] sm:w-[350px] sm:h-[500px]' : 'w-[175px] h-[500px] sm:w-[175px] sm:h-[500px]'}
+                  ${isActive ? 'w-[300px] h-[500px] sm:w-[350px] sm:h-[500px]' : 'w-[175px] h-[500px] sm:w-[175px] sm:h-[500px]'}
                 `}
                 onMouseEnter={() => setExpandedCard(plan.id)}
                 onMouseLeave={() => setExpandedCard(plan.id)}
@@ -257,15 +257,6 @@ export default function InsurancePlans() {
           <p className="text-gray-300 max-w-3xl lg:max-w-md mx-auto text-lg sm:text-lg leading-relaxed lg:text-right">
             Protect your future and your loved ones with our insurance solutions—grow your retirement with an <span className="text-white font-semibold">IPP</span>, save with <span className="text-white font-semibold">Hakika</span>, enjoy long-term savings with life cover, and secure your family with <span className="text-white font-semibold">Greenlight Whole Life Assurance</span>
           </p>
-        </div>
-      </div>
-      <div>
-
-        {/* Who Gets Insured Section */}
-        <div className="mt-16 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">
-            Who gets <span className="text-emerald-400">insured?</span>
-          </h2>
         </div>
       </div>
 
