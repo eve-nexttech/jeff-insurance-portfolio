@@ -131,7 +131,9 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Email</p>
-                  <p className="font-semibold">jeffmuthuri@example.com</p>
+                  <a href="mailto:jeffmuthuri.oldmutualinsurance@gmail.com" className="font-semibold hover:text-primary-light transition-colors">
+                    jeffmuthuri.oldmutualinsurance@gmail.com
+                  </a>
                 </div>
               </div>
 
@@ -141,7 +143,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Phone</p>
-                  <p className="font-semibold">+254 700 000000</p>
+                  <a href="tel:+254783325017" className="font-semibold hover:text-primary-light transition-colors"> +254783325017 </a>
                 </div>
               </div>
 
@@ -151,7 +153,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Location</p>
-                  <p className="font-semibold">Nairobi, Kenya - Northlands Rd, Granda</p>
+                  <p className="font-semibold">Thika Township, Kwame Nkruma Rd, Kiambu</p>
                 </div>
               </div>
             </div>
@@ -159,10 +161,10 @@ export default function ContactSection() {
             {/* Advisor Info */}
             <div className="flex items-center space-x-4 mt-8 bg-primary-light/10 p-4 rounded-2xl">
               <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center">
-                <span className="text-sm text-gray-600">Photo</span>
+                <Image width={100} height={100} src="/images/image.png" alt="Financial Advisor" className="w-full h-full object-cover" />
               </div>
               <div>
-                <p className="font-bold text-lg">Jeff Muthuri</p>
+                <p className="font-bold text-lg">Eng. Jeff Muthuri</p>
                 <p className="text-sm text-gray-400">Your Financial Advisor</p>
               </div>
             </div>

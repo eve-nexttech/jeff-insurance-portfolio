@@ -41,7 +41,7 @@ export default function InsurancePlans() {
   const isCardActive = (cardId: number) => expandedCard === cardId || focusedCard === cardId;
 
   return (
-    <div className="min-h-screen py-16 px-4 sm:px-4 lg:px-6">
+    <div className="py-4 px-4 sm:px-4 lg:px-6">
       <div className="max-w-full mx-auto flex flex-col-reverse lg:flex-row gap-8 container-custom">
         {/* Cards Horizontal Container */}
         <div className="flex gap-4 sm:gap-6 overflow-x-auto pb-8 px-0 sm:px-4 lg:px-0 justify-start lg:justify-center scrollbar-hide">

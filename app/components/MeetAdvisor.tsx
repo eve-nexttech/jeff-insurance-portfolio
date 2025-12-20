@@ -1,5 +1,7 @@
 'use client';
 
+import Image from "next/image";
+
 export default function MeetAdvisor() {
   return (
     <section className="py-20 relative overflow-hidden px-4 lg:px-0">
@@ -23,11 +25,10 @@ export default function MeetAdvisor() {
             </h2>
 
             <p className="text-gray-300 text-lg leading-relaxed">
-              I&apos;m a licensed insurance broker dedicated to guiding you through the best financial and
-              protection plans on the market. My goal is to simplify insurance. One human advice at a
-              time to protect you with the best products that best match your dreams and lifestyle.
-              Whether you&apos;re saving for retirement, investing in your child&apos;s education, or looking to
-              secure your family&apos;s future, I&apos;m here to support you every step of the way.
+              I&apos;m a licensed insurance agent dedicated to guiding you through the best financial and protection plans in the market.
+              My goal is to simplify insurance. One human advice at a time to present you with the best products that best match your dreams and lifestyle.
+              Whether you&apos;re saving for retirement, investing in your child&apos;s education,
+              or looking to secure your family&apos;s future, I&apos;m here to support you every step of the way.
             </p>
 
             {/* <button className="bg-primary-light text-primary-green px-6 py-3 rounded-full font-semibold hover:bg-white transition cursor-pointer">
@@ -43,9 +44,13 @@ export default function MeetAdvisor() {
 
               {/* Main image container */}
               <div className="relative w-80 h-80 mx-auto rounded-full overflow-hidden border-8 border-primary-light/30 shadow-2xl">
-                <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-                  <span className="text-gray-600 text-center">Financial Advisor Photo</span>
-                </div>
+                <Image
+                  width={100}
+                  height={100}
+                  src="/images/image.png"
+                  alt="Financial Advisor"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Decorative element */}
