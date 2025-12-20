@@ -6,9 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
-    "test": "tsc"
+    "lint": "eslint && tsc --noEmit",
+    "lint:fix": "eslint --fix && tsc --noEmit"
   },
   "dependencies": {
     "next": "^16.0.7",

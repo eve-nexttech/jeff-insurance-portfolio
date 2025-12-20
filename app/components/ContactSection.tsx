@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, FormEvent } from 'react';
 
 interface FormData {
@@ -119,7 +120,7 @@ export default function ContactSection() {
             </h2>
 
             <p className="text-gray-300 text-lg">
-              Reach out <img src="/svg/now.svg" alt="Cursor icon" className="w-32 h-32 inline-block align-middle" /> for free consultations and find the insurance plan that fits your life and goals.
+              Reach out <Image width={100} height={100} src="/svg/now.svg" alt="Cursor icon" className="w-32 h-32 inline-block align-middle" /> for free consultations and find the insurance plan that fits your life and goals.
             </p>
 
             {/* Contact Info Cards */}

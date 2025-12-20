@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 export default function WhoGetsInsured() {
   return (
     <section id="insurance" className="py-20 px-4 lg:px-0">
@@ -11,7 +13,9 @@ export default function WhoGetsInsured() {
         <div className="relative max-w-4xl mx-auto">
           {/* Main image container with rounded corners */}
           <div className="relative sm:rounded-3xl sm:overflow-hidden lg:overflow-none sm:shadow-2xl md:rounded-3xl md:overflow-hidden md:shadow-2xl lg:rounded-none lg:overflow-visible lg:shadow-none">
-            <img
+            <Image
+              width={100}
+              height={100}
               src="/images/whogetsInsured.png" // Placeholder image URL
               alt="Diverse group of people smiling, including families, young professionals, and seniors"
               className="w-full h-96 object-cover"
@@ -42,7 +46,7 @@ export default function WhoGetsInsured() {
 const WhoGetsInsuredInfo = () => {
   return (
     <div className="flex flex-row text-center max-w-2xl p-6 bg-gradient-to-r from-[#009A7B] via-[#24A656] via-[#3CAD3E] to-[#45B035]">
-      <img src="/images/logo.png" alt="Company Logo" className="hidden sm:hidden md:block mx-auto mb-6 h-16 w-auto " />
+      <Image width={100} height={100} src="/images/logo.png" alt="Company Logo" className="hidden sm:hidden md:block mx-auto mb-6 h-16 w-auto " />
       <p className="text-lg text-white mx-4">
         Our insurance plans are designed to protect you, your family, and your loved ones. Whether it&apos;s securing your retirement, saving for a child&apos;s education, or ensuring financial protection in case of life&apos;s unexpected events, we make sure the people who matter most are covered.
       </p>

@@ -32,8 +32,6 @@ export default function WhatWeOffer() {
   React.useEffect(() => {
     if (carouselRef.current) {
       const carousel = carouselRef.current;
-      // Calculate scroll position to center the currentSlide item
-      // Assuming each item takes 1/3 of the carousel width for display
       const itemWidth = carousel.scrollWidth / services.length; // Actual width of one item if all were visible
       const scrollPosition = currentSlide * itemWidth - (carousel.offsetWidth / 2) + (itemWidth / 2);
 
@@ -42,15 +40,7 @@ export default function WhatWeOffer() {
         behavior: 'smooth'
       });
     }
-  }, [currentSlide]); // services.length is a constant, no need to include it
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % services.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + services.length) % services.length);
-  };
+  }, [currentSlide]);
 
   return (
     <section id="services" className="py-20" ref={ref}>
