@@ -22,6 +22,11 @@ interface FormErrors {
   insurancePlan?: string;
 };
 
+interface EmailConfig {
+  service_id: string | undefined;
+  template_id: string | undefined;
+  publicKey: string | undefined;
+}
 
 
 export default function ContactSection() {
@@ -38,58 +43,67 @@ export default function ContactSection() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
+    try {
+      const newErrors: FormErrors = {};
 
-    // Name validation
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = 'Name must be at least 2 characters';
+      // Name validation
+      if (!formData.name.trim()) {
+        newErrors.name = 'Name is required';
+      } else if (formData.name.trim().length < 2) {
+        newErrors.name = 'Name must be at least 2 characters';
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!formData.email.trim()) {
+        newErrors.email = 'Email is required';
+      } else if (!emailRegex.test(formData.email)) {
+        newErrors.email = 'Please enter a valid email';
+      }
+
+      // Phone validation (optional but if provided, must be valid)
+      if (formData.phone && !/^[\d\s\-\+\(\)]+$/.test(formData.phone)) {
+        newErrors.phone = 'Please enter a valid phone number';
+      }
+
+      // Message validation
+      if (!formData.message.trim()) {
+        newErrors.message = 'Message is required';
+      } else if (formData.message.trim().length < 10) {
+        newErrors.message = 'Message must be at least 10 characters';
+      };
+
+      // Insurance plan validation
+      if (!formData.insurancePlan.trim()) {
+        newErrors.insurancePlan = 'Insurance plan is required';
+      } else if (!plans.map(plan => plan.label).includes(formData.insurancePlan)) {
+        newErrors.insurancePlan = 'Invalid insurance plan';
+      }
+
+      setErrors(newErrors);
+      console.log('Form validation errors:', newErrors);
+      return Object.keys(newErrors).length === 0;
+    } catch (error) {
+      console.error('Form validation error:', error);
+      throw error;
     }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
-    }
-
-    // Phone validation (optional but if provided, must be valid)
-    if (formData.phone && !/^[\d\s\-\+\(\)]+$/.test(formData.phone)) {
-      newErrors.phone = 'Please enter a valid phone number';
-    }
-
-    // Message validation
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
-    const newErrors = validateForm();
-    if (newErrors) {
-      return;
-    }
-
     setIsSubmitting(true);
     setSubmitSuccess(false);
 
     try {
-      const config = {
-        service_id: 'service_u5lyvaq',
-        template_id: 'template_oxiigpm',
-        publicKey: 'q0KmGNQFFCgN6TQCa',
+      validateForm();
+      const config: EmailConfig = {
+        service_id: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        template_id: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
       };
       const templateParams = {
-        to_email: 'sammymusembi77@gmail.com', // Replace with your email
+        to_email: process.env.NEXT_PUBLIC_EMAILJS_TO_EMAIL,
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone || 'Not provided',
@@ -97,19 +111,20 @@ export default function ContactSection() {
         reply_to: formData.email,
         insurance_plan: formData.insurancePlan,
       };
+      if (!config.service_id || !config.template_id || !config.publicKey) {
+        console.error('EmailJS configuration is missing');
+        return;
+      }
       await emailjs.send(config.service_id, config.template_id, templateParams, { publicKey: config.publicKey }).then(
         function (response) {
-          setIsSubmitting(false);
-          setTimeout(() => {
-            setFormData({
-              name: '',
-              email: '',
-              phone: '',
-              message: '',
-              insurancePlan: '',
-            });
-            setSubmitSuccess(true);
-          }, 2000);
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            message: '',
+            insurancePlan: plans[0].label,
+          });
+          setSubmitSuccess(true);
 
           console.log('SUCCESS!', response.status, response.text);
         },
@@ -123,6 +138,7 @@ export default function ContactSection() {
       setSubmitSuccess(false);
     } finally {
       setIsSubmitting(false);
+
     }
   };
 
