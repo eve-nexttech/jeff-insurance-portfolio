@@ -188,7 +188,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Email</p>
-                  <a href="mailto:jeffmuthuri.oldmutualinsurance@gmail.com" className="text-sm lg:text-lg font-semibold hover:text-primary-light transition-colors">
+                  <a href="mailto:jeffmuthuri.oldmutualinsurance@gmail.com" className="text-xs lg:text-lg font-semibold hover:text-primary-light transition-colors">
                     jeffmuthuri.oldmutualinsurance@gmail.com
                   </a>
                 </div>
