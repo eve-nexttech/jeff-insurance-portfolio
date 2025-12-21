@@ -1,9 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, FormEvent, useEffect } from 'react';
+import { useState, FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
-import Script from 'next/script';
 import { plans } from './InsurancePlans';
 
 
@@ -128,7 +127,7 @@ export default function ContactSection() {
   };
 
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
 
