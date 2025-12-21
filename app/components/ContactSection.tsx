@@ -162,7 +162,7 @@ export default function ContactSection() {
         </svg>
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-10 px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Call to Action */}
           <div className="space-y-6">
@@ -176,7 +176,7 @@ export default function ContactSection() {
               future <span className="gradient-text">together!</span>
             </h2>
 
-            <p className="text-gray-300 text-lg">
+            <p className="text-gray-300 text-lg ">
               Reach out <Image width={100} height={100} src="/svg/now.svg" alt="Cursor icon" className="w-32 h-32 inline-block align-middle" /> for free consultations and find the insurance plan that fits your life and goals.
             </p>
 
@@ -188,7 +188,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Email</p>
-                  <a href="mailto:jeffmuthuri.oldmutualinsurance@gmail.com" className="font-semibold hover:text-primary-light transition-colors">
+                  <a href="mailto:jeffmuthuri.oldmutualinsurance@gmail.com" className="text-sm lg:text-lg font-semibold hover:text-primary-light transition-colors">
                     jeffmuthuri.oldmutualinsurance@gmail.com
                   </a>
                 </div>
@@ -200,7 +200,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Phone</p>
-                  <a href="tel:+254783325017" className="font-semibold hover:text-primary-light transition-colors"> +254783325017 </a>
+                  <a href="tel:+254783325017" className="text-sm lg:text-lg font-semibold hover:text-primary-light transition-colors"> +254783325017 </a>
                 </div>
               </div>
 
@@ -210,7 +210,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Location</p>
-                  <p className="font-semibold">Thika Township, Kwame Nkruma Rd, Kiambu</p>
+                  <p className="text-sm lg:text-lg font-semibold">Thika Township, Kwame Nkruma Rd, Kiambu</p>
                 </div>
               </div>
             </div>
