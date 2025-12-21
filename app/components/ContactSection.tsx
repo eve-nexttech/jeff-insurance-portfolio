@@ -1,13 +1,18 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
+import Script from 'next/script';
+import { plans } from './InsurancePlans';
+
 
 interface FormData {
   name: string;
   email: string;
   phone: string;
   message: string;
+  insurancePlan: string;
 }
 
 interface FormErrors {
@@ -15,14 +20,18 @@ interface FormErrors {
   email?: string;
   phone?: string;
   message?: string;
-}
+  insurancePlan?: string;
+};
+
+
 
 export default function ContactSection() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    insurancePlan: '',
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -63,28 +72,61 @@ export default function ContactSection() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
-    if (!validateForm()) {
+    const newErrors = validateForm();
+    if (newErrors) {
       return;
     }
 
     setIsSubmitting(true);
+    setSubmitSuccess(false);
 
-    // Simulate form submission (replace with actual API call later)
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    try {
+      const config = {
+        service_id: 'service_u5lyvaq',
+        template_id: 'template_oxiigpm',
+        publicKey: 'q0KmGNQFFCgN6TQCa',
+      };
+      const templateParams = {
+        to_email: 'sammymusembi77@gmail.com', // Replace with your email
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone || 'Not provided',
+        message: formData.message,
+        reply_to: formData.email,
+        insurance_plan: formData.insurancePlan,
+      };
+      await emailjs.send(config.service_id, config.template_id, templateParams, { publicKey: config.publicKey }).then(
+        function (response) {
+          setIsSubmitting(false);
+          setTimeout(() => {
+            setFormData({
+              name: '',
+              email: '',
+              phone: '',
+              message: '',
+              insurancePlan: '',
+            });
+            setSubmitSuccess(true);
+          }, 2000);
+
+          console.log('SUCCESS!', response.status, response.text);
+        },
+        function (err) {
+          setIsSubmitting(false);
+          console.log('FAILED...', err);
+        },
+      );
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitSuccess(false);
+    } finally {
       setIsSubmitting(false);
-      setSubmitSuccess(true);
-
-      // Reset form
-      setFormData({ name: '', email: '', phone: '', message: '' });
-
-      // Hide success message after 5 seconds
-      setTimeout(() => setSubmitSuccess(false), 5000);
-    }, 1500);
+    }
   };
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -181,6 +223,28 @@ export default function ContactSection() {
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Insurance Plan */}
+              <div>
+                <label htmlFor="insurancePlan" className="block text-sm font-medium mb-2">
+                  Insurance Plan *
+                </label>
+                <select
+                  id="insurancePlan"
+                  name="insurancePlan"
+                  value={formData.insurancePlan}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-white/10 border border-primary-light/30 rounded-xl focus:ring-primary-light focus:border-primary-light"
+                >
+                  {plans && plans?.map((plan) => (
+                    <option key={plan.id} value={plan.label} className="text-black">
+                      {plan.label}
+                    </option>
+                  ))}
+                </select>
+                {errors.insurancePlan && (
+                  <p className="text-red-500 text-sm mt-1">{errors.insurancePlan}</p>
+                )}
+              </div>
               {/* Name Input */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">

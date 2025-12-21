@@ -3,40 +3,41 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
+export const plans = [
+  {
+    id: 1,
+    label: 'Greenlight Whole Life Assurance',
+    title: 'Personal Pension Plan',
+    description: 'An Individual Pension Plan (IPP) is a personal retirement savings plan you set up yourself, offering tax benefits and flexible investment options.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop'
+  },
+  {
+    id: 2,
+    label: 'Hakika Savings Plan',
+    title: 'Personal Pension Plan',
+    description: 'An Individual Pension Plan (IPP) is a personal retirement savings plan you set up yourself, offering tax benefits and flexible investment options.',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=500&fit=crop'
+  },
+  {
+    id: 3,
+    label: 'Lehio Education Plan',
+    title: 'Personal Pension Plan',
+    description: 'An Individual Pension Plan (IPP) is a personal retirement savings plan you set up yourself, offering tax benefits and flexible investment options.',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=500&fit=crop'
+  },
+  {
+    id: 4,
+    label: 'CMMUO',
+    title: 'Personal Pension Plan',
+    description: 'An Individual Pension Plan (IPP) is a personal retirement savings plan you set up yourself, offering tax benefits and flexible investment options.',
+    image: 'https://images.unsplash.com/photo-1579621970563-430f63602d4b?w=400&h=500&fit=crop'
+  }
+];
+
 export default function InsurancePlans() {
   const [expandedCard, setExpandedCard] = useState<number | null>(4);
   const [focusedCard, setFocusedCard] = useState<number | null>(null);
 
-  const plans = [
-    {
-      id: 1,
-      label: 'Greenlight Whole Life Assurance',
-      title: 'Personal Pension Plan',
-      description: 'An Individual Pension Plan (IPP) is a personal retirement savings plan you set up yourself, offering tax benefits and flexible investment options.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop'
-    },
-    {
-      id: 2,
-      label: 'Hakika Savings Plan',
-      title: 'Personal Pension Plan',
-      description: 'An Individual Pension Plan (IPP) is a personal retirement savings plan you set up yourself, offering tax benefits and flexible investment options.',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=500&fit=crop'
-    },
-    {
-      id: 3,
-      label: 'Lehio Education Plan',
-      title: 'Personal Pension Plan',
-      description: 'An Individual Pension Plan (IPP) is a personal retirement savings plan you set up yourself, offering tax benefits and flexible investment options.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=500&fit=crop'
-    },
-    {
-      id: 4,
-      label: 'CMMUO',
-      title: 'Personal Pension Plan',
-      description: 'An Individual Pension Plan (IPP) is a personal retirement savings plan you set up yourself, offering tax benefits and flexible investment options.',
-      image: 'https://images.unsplash.com/photo-1579621970563-430f63602d4b?w=400&h=500&fit=crop'
-    }
-  ];
 
   const isCardActive = (cardId: number) => expandedCard === cardId || focusedCard === cardId;
 
