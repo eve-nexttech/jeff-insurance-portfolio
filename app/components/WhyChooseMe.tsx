@@ -3,26 +3,26 @@
 import { urlFor } from "@/lib/sanity";
 import Image from "next/image";
 
-const reasons = [
-  {
-    id: '1',
-    image_path: '/images/image_8.png',
-    title: 'Personalized Approach',
-    description: 'Personalized insurance recommendations'
-  },
-  {
-    id: '2',
-    image_path: '/images/image_9.png',
-    title: 'Expert Guidance',
-    description: 'Access to trusted, reputable insurance provider'
-  },
-  {
-    id: '3',
-    image_path: '/images/image_10.png',
-    title: 'Trusted Partner',
-    description: 'A commitment to long-term client support and financial wellness'
-  },
-];
+// const reasons = [
+//   {
+//     id: '1',
+//     image_path: '/images/image_8.png',
+//     title: 'Personalized Approach',
+//     description: 'Personalized insurance recommendations'
+//   },
+//   {
+//     id: '2',
+//     image_path: '/images/image_9.png',
+//     title: 'Expert Guidance',
+//     description: 'Access to trusted, reputable insurance provider'
+//   },
+//   {
+//     id: '3',
+//     image_path: '/images/image_10.png',
+//     title: 'Trusted Partner',
+//     description: 'A commitment to long-term client support and financial wellness'
+//   },
+// ];
 
 interface WhyChooseMeProps {
   whychooseme: {

@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { useState, FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
-import { plans } from './InsurancePlans';
 import { urlFor } from '@/lib/sanity';
 
 
