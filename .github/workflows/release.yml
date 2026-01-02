@@ -11,6 +11,10 @@ jobs:
     permissions:
       contents: write
     
+    env:
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+      NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
