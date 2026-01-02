@@ -1,8 +1,16 @@
 'use client';
 
+import { urlFor } from '@/lib/sanity';
 import Image from 'next/image';
 
-export default function WhoGetsInsured() {
+interface WhoGetsInsuredProps {
+  whogetsinsured: {
+    description: string;
+    image: string;
+  };
+}
+
+export default function WhoGetsInsured({ whogetsinsured }: WhoGetsInsuredProps) {
   return (
     <section id="insurance" className="py-20 px-4 lg:px-0">
       <div className="container-custom">
@@ -16,7 +24,7 @@ export default function WhoGetsInsured() {
             <Image
               width={100}
               height={100}
-              src="/images/whogetsInsured.png" // Placeholder image URL
+              src={urlFor(whogetsinsured.image).url()} // Placeholder image URL
               alt="Diverse group of people smiling, including families, young professionals, and seniors"
               className="w-full h-96 object-cover"
             />
@@ -25,7 +33,7 @@ export default function WhoGetsInsured() {
             <div className="absolute inset-0 bg-gradient-to-t from-primary-green/60 to-transparent pointer-events-none"></div>
             {/* Info text */}
             <div className="absolute hidden md:block top-0 left-1/3 w-full max-w-2xl z-100">
-              <WhoGetsInsuredInfo />
+              <WhoGetsInsuredInfo description={whogetsinsured.description} />
             </div>
           </div>
 
@@ -34,7 +42,7 @@ export default function WhoGetsInsured() {
           <div className="absolute -bottom-4 -right-4 text-yellow-400 text-2xl animate-float" style={{ animationDelay: '1s' }}>✨</div>
 
           <div className="block md:hidden">
-            <WhoGetsInsuredInfo />
+            <WhoGetsInsuredInfo description={whogetsinsured.description} />
           </div>
 
         </div>
@@ -43,12 +51,12 @@ export default function WhoGetsInsured() {
   );
 };
 
-const WhoGetsInsuredInfo = () => {
+const WhoGetsInsuredInfo = ({ description }: { description: string }) => {
   return (
     <div className="flex flex-row text-center max-w-2xl p-6 bg-gradient-to-r from-[#009A7B] via-[#24A656] via-[#3CAD3E] to-[#45B035]">
       <Image width={100} height={100} src="/images/logo.png" alt="Company Logo" className="hidden sm:hidden md:block mx-auto mb-6 h-16 w-auto " />
       <p className="text-lg text-white mx-4">
-        Our insurance plans are designed to protect you, your family, and your loved ones. Whether it&apos;s securing your retirement, saving for a child&apos;s education, or ensuring financial protection in case of life&apos;s unexpected events, we make sure the people who matter most are covered.
+        {description}
       </p>
     </div>
   );

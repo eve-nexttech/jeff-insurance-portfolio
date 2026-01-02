@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState, FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
 import { plans } from './InsurancePlans';
+import { urlFor } from '@/lib/sanity';
 
 
 interface FormData {
@@ -28,8 +29,27 @@ interface EmailConfig {
   publicKey: string | undefined;
 }
 
+interface ContactProps {
+  contact: {
+    address: string;
+    email: string;
+    phone: string;
+    profileImage: string;
+    profileName: string;
+    profileTagline: string;
+    cta: { title: string; }
+  };
+  plans: {
+    id: number;
+    label: string;
+    title: string;
+    description: string;
+    image: string;
+  }[];
+}
 
-export default function ContactSection() {
+
+export default function ContactSection({ contact, plans }: ContactProps) {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -76,7 +96,7 @@ export default function ContactSection() {
       // Insurance plan validation
       if (!formData.insurancePlan.trim()) {
         newErrors.insurancePlan = 'Insurance plan is required';
-      } else if (!plans.map(plan => plan.label).includes(formData.insurancePlan)) {
+      } else if (!plans.map(plan => plan.title).includes(formData.insurancePlan)) {
         newErrors.insurancePlan = 'Invalid insurance plan';
       }
 
@@ -188,8 +208,8 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Email</p>
-                  <a href="mailto:jeffmuthuri.oldmutualinsurance@gmail.com" className="text-xs lg:text-lg font-semibold hover:text-primary-light transition-colors">
-                    jeffmuthuri.oldmutualinsurance@gmail.com
+                  <a href={`mailto:${contact.email}`} className="text-xs lg:text-lg font-semibold hover:text-primary-light transition-colors">
+                    {contact.email}
                   </a>
                 </div>
               </div>
@@ -200,7 +220,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Phone</p>
-                  <a href="tel:+254783325017" className="text-sm lg:text-lg font-semibold hover:text-primary-light transition-colors"> +254783325017 </a>
+                  <a href={`tel:${contact.phone}`} className="text-sm lg:text-lg font-semibold hover:text-primary-light transition-colors"> {contact.phone} </a>
                 </div>
               </div>
 
@@ -210,7 +230,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Location</p>
-                  <p className="text-sm lg:text-lg font-semibold">Thika Township, Kwame Nkruma Rd, Kiambu</p>
+                  <p className="text-sm lg:text-lg font-semibold">{contact.address}</p>
                 </div>
               </div>
             </div>
@@ -218,11 +238,11 @@ export default function ContactSection() {
             {/* Advisor Info */}
             <div className="flex items-center space-x-4 mt-8 bg-primary-light/10 p-4 rounded-2xl">
               <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center">
-                <Image width={100} height={100} src="/images/image.png" alt="Financial Advisor" className="w-full h-full object-cover" />
+                <Image width={100} height={100} src={urlFor(contact.profileImage).url()} alt="Financial Advisor" className="w-full h-full object-cover" />
               </div>
               <div>
-                <p className="font-bold text-lg">Eng. Jeff Muthuri</p>
-                <p className="text-sm text-gray-400">Your Financial Advisor</p>
+                <p className="font-bold text-lg">{contact.profileName}</p>
+                <p className="text-sm text-gray-400">{contact.profileTagline}</p>
               </div>
             </div>
           </div>
@@ -250,9 +270,9 @@ export default function ContactSection() {
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-white/10 border border-primary-light/30 rounded-xl focus:ring-primary-light focus:border-primary-light"
                 >
-                  {plans && plans?.map((plan) => (
-                    <option key={plan.id} value={plan.label} className="text-black">
-                      {plan.label}
+                  {plans && plans?.map((plan, index) => (
+                    <option key={index} value={plan.title} className="text-black">
+                      {plan.title}
                     </option>
                   ))}
                 </select>

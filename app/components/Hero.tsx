@@ -3,10 +3,13 @@
 import Image from 'next/image';
 
 interface HeroProps {
+  description?: string;
+  restHeadline?: string;
+  taggedHeadline?: string;
   rating?: number;
 }
 
-export default function Hero({ rating = 4.8 }: HeroProps) {
+export default function Hero({ description = "", restHeadline = "", taggedHeadline = "", rating = 4.8 }: HeroProps) {
   return (
     <section className="relative min-h-screen pt-16 pb-20 overflow-hidden">
       {/* Decorative SVG curves in background */}
@@ -59,13 +62,13 @@ export default function Hero({ rating = 4.8 }: HeroProps) {
             </div>
 
             <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold leading-tight w-full text-center">
-              <span><span className="gradient-text">Secure Your Future,</span>One, </span>
+              <span className="gradient-text">{taggedHeadline}</span>
               <br />
-              <span className="text-white">Smart Decision at a Time!</span>
+              <span className="text-white">{restHeadline}</span>
             </h1>
 
             <p className="text-gray-300 text-sm lg:text-xl max-w-lg lg:max-w-4xl mt-4 text-center mx-auto font-light ">
-              <span>I help individuals and families choose the right insurance solutions that protect their goals, safeguard their income, and ensure a secure future as their families grow.</span>
+              <span>{description}</span>
             </p>
           </div>
 

@@ -6,15 +6,13 @@ import { useScrollAnimation } from '@/app/hooks/useScrollAnimation';
 import Image from 'next/image';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { urlFor } from "@/lib/sanity";
 
-const services: ServiceCard[] = [
-  { id: '1', title: 'Personal Pension Plan', url: "/images/offerSection/PensionPlan.png", description: 'Build your retirement your way with an IPP—flexible, tax-smart, and tailored to your goals, with the option to combine all your past pension benefits for maximum growth.' },
-  { id: '2', title: 'Education Plan', url: "/images/offerSection/Education.png", description: 'A long-term savings plan with built-in life cover—helping you grow your future while staying protected and financially supported in emergencies. Suitable for you or your nominated child.' },
-  { id: '3', title: 'Savings Plan', url: "/images/offerSection/Savings.png", description: 'Grow your long-term savings with Hakika from just KES 3000 monthly, with flexible terms and a guaranteed lump-sum payout at the end.' },
-  { id: '4', title: 'Life Insurance', url: "/images/offerSection/LifeInsurance.png", description: 'Greenlight Whole Life Assurance provides financial security for your loved ones, paying a lump sum to beneficiaries if you pass away—whether naturally or accidentally.' },
-];
+interface WhatWeOfferProps {
+  services: ServiceCard[];
+}
 
-export default function WhatWeOffer() {
+export default function WhatWeOffer({ services }: WhatWeOfferProps) {
   const { ref, isVisible } = useScrollAnimation();
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const carouselRef = React.useRef<HTMLDivElement>(null);
@@ -53,12 +51,12 @@ export default function WhatWeOffer() {
         <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <div
-              key={service.id}
+              key={index}
               className={`w-full h-[200px] rounded-3xl p-4 flex flex-row justify-start items-start text-center card-hover cursor-pointer border border-primary-light/20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <Image src={service.url} alt={service.title} width={64} height={64} className="object-cover rounded-3xl" />
+              <Image src={urlFor(service.image).width(64).height(64).url()} alt={service.title} width={64} height={64} className="object-cover rounded-3xl" />
               <div className="flex flex-col text-start mx-4 mb-4">
                 <h3 className="text-xl font-bold">{service.title}</h3>
                 <p className="text-sm text-white font-normal font-weight-regular">{service.description}</p>
@@ -87,12 +85,12 @@ export default function WhatWeOffer() {
               const isCentered = index === currentSlide;
               return (
                 <div
-                  key={service.id}
+                  key={index}
                   className={`w-[250px] h-[350px] mx-auto my-8 rounded-3xl p-4 flex flex-col justify-center items-center text-center card-hover cursor-pointer border border-primary-light/20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} ${isCentered ? 'scale-115' : 'scale-100'
                     }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <Image src={service.url} alt={service.title} width={32} height={32} className="object-contain rounded-full w-24 h-24" />
+                  <Image src={urlFor(service.image).width(32).height(32).url()} alt={service.title} width={32} height={32} className="object-contain rounded-full w-24 h-24" />
                   <div className="flex flex-col text-start mx-4 my-4 items-center">
                     <h3 className="text-xl font-bold text-center">{service.title}</h3>
                     <p className="text-xs text-white font-normal font-weight-light text-center">{service.description}</p>

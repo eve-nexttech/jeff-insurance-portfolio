@@ -1,8 +1,16 @@
 'use client';
 
+import { urlFor } from "@/lib/sanity";
 import Image from "next/image";
 
-export default function MeetAdvisor() {
+interface MeetAdvisorProps {
+  advisor: {
+    description: string;
+    image: string;
+  };
+}
+
+export default function MeetAdvisor({ advisor }: MeetAdvisorProps) {
   return (
     <section className="py-20 relative overflow-hidden px-4 lg:px-0">
       {/* Background decoration */}
@@ -25,10 +33,7 @@ export default function MeetAdvisor() {
             </h2>
 
             <p className="text-gray-300 text-lg leading-relaxed">
-              I&apos;m a licensed insurance agent dedicated to guiding you through the best financial and protection plans in the market.
-              My goal is to simplify insurance. One human advice at a time to present you with the best products that best match your dreams and lifestyle.
-              Whether you&apos;re saving for retirement, investing in your child&apos;s education,
-              or looking to secure your family&apos;s future, I&apos;m here to support you every step of the way.
+              {advisor.description}
             </p>
 
             {/* <button className="bg-primary-light text-primary-green px-6 py-3 rounded-full font-semibold hover:bg-white transition cursor-pointer">
@@ -47,7 +52,7 @@ export default function MeetAdvisor() {
                 <Image
                   width={100}
                   height={100}
-                  src="/images/image.png"
+                  src={urlFor(advisor.image).width(100).height(100).url()}
                   alt="Financial Advisor"
                   className="w-full h-full object-cover"
                 />

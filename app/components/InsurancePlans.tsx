@@ -1,5 +1,6 @@
 'use client';
 
+import { urlFor } from '@/lib/sanity';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -34,7 +35,20 @@ export const plans = [
   }
 ];
 
-export default function InsurancePlans() {
+interface InsurancePlansProps {
+  insurancePlans: {
+    description: string;
+    plans: {
+      id: number;
+      label: string;
+      title: string;
+      description: string;
+      image: string;
+    }[];
+  };
+}
+
+export default function InsurancePlans({ insurancePlans }: InsurancePlansProps) {
   const [expandedCard, setExpandedCard] = useState<number | null>(4);
   const [focusedCard, setFocusedCard] = useState<number | null>(null);
 
@@ -46,25 +60,25 @@ export default function InsurancePlans() {
       <div className="max-w-full mx-auto flex flex-col-reverse lg:flex-row gap-8 container-custom">
         {/* Cards Horizontal Container */}
         <div className="flex gap-4 sm:gap-6 overflow-x-auto pb-8 px-0 sm:px-4 lg:px-0 justify-start lg:justify-center scrollbar-hide">
-          {plans.map((plan) => {
-            const isActive = isCardActive(plan.id);
+          {insurancePlans.plans && insurancePlans.plans.map((plan, index) => {
+            const isActive = isCardActive(index);
 
             return (
               <article
-                key={plan.id}
+                key={index}
                 className={`
                   group relative rounded-3xl overflow-visible cursor-pointer 
                   transition-all duration-500 ease-in-out flex-shrink-0
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950
                   ${isActive ? 'w-[300px] h-[500px] sm:w-[350px] sm:h-[500px]' : 'w-[175px] h-[500px] sm:w-[175px] sm:h-[500px]'}
                 `}
-                onMouseEnter={() => setExpandedCard(plan.id)}
-                onMouseLeave={() => setExpandedCard(plan.id)}
-                onFocus={() => setFocusedCard(plan.id)}
+                onMouseEnter={() => setExpandedCard(index)}
+                onMouseLeave={() => setExpandedCard(null)}
+                onFocus={() => setFocusedCard(index)}
                 onBlur={() => setFocusedCard(null)}
                 tabIndex={0}
                 role="region"
-                aria-label={`${plan.label} - ${plan.title}`}
+                aria-label={`${plan.title}`}
               >
                 {/* Card Inner Container - Rounded overflow */}
                 <div className="relative rounded-3xl overflow-hidden h-full">
@@ -73,8 +87,8 @@ export default function InsurancePlans() {
                     <Image
                       width={100}
                       height={100}
-                      src={plan.image}
-                      alt={plan.label}
+                      src={urlFor(plan.image).url()}
+                      alt={plan.title}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -107,7 +121,7 @@ export default function InsurancePlans() {
                         {/* CTA Button */}
                         <button
                           className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-all duration-300 font-medium text-sm group/btn"
-                          aria-label={`Learn more about ${plan.label}`}
+                          aria-label={`Learn more about ${plan.title}`}
                         >
                           Learn More
                         </button>
@@ -160,7 +174,7 @@ export default function InsurancePlans() {
                           transform: 'rotate(180deg)'
                         }}
                       >
-                        {plan.label}
+                        {plan.title}
                       </p>
                     )}
                   </div>
@@ -176,7 +190,7 @@ export default function InsurancePlans() {
             <span className="text-white">Plans</span>
           </h1>
           <p className="text-gray-300 max-w-3xl lg:max-w-md mx-auto text-lg sm:text-lg leading-relaxed lg:text-right">
-            Protect your future and your loved ones with our insurance solutions—grow your retirement with an <span className="text-white font-semibold">IPP</span>, save with <span className="text-white font-semibold">Hakika</span>, enjoy long-term savings with life cover, and secure your family with <span className="text-white font-semibold">Greenlight Whole Life Assurance</span>
+            {insurancePlans.description}
           </p>
         </div>
       </div>

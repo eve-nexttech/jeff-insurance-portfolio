@@ -1,5 +1,6 @@
 'use client';
 
+import { urlFor } from "@/lib/sanity";
 import Image from "next/image";
 
 const reasons = [
@@ -23,7 +24,18 @@ const reasons = [
   },
 ];
 
-export default function WhyChooseMe() {
+interface WhyChooseMeProps {
+  whychooseme: {
+    description: string;
+    reasons: {
+      image: string;
+      title: string;
+      description: string;
+    }[];
+  };
+}
+
+export default function WhyChooseMe({ whychooseme }: WhyChooseMeProps) {
   return (
     <section className="py-20 px-4 lg:px-0">
       <div className="container-custom">
@@ -32,15 +44,15 @@ export default function WhyChooseMe() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {reasons.map((reason, index) => (
+          {whychooseme.reasons && whychooseme.reasons.map((reason, index) => (
             <div
-              key={reason.id}
+              key={index}
               className="backdrop-blur-sm rounded-3xl p-8 border border-primary-light/20 card-hover items-center"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="mb-4 flex justify-center">
                 <Image
-                  src={reason.image_path}
+                  src={urlFor(reason.image).url()}
                   alt={reason.title}
                   width={64}
                   height={64}
